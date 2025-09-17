@@ -130,9 +130,9 @@ async def get_features_result(job_id: str):
     if job_id not in jobs:
         return JSONResponse(status_code=404, content={"error": "Job not found"})
     return jobs[job_id]
-# ======================
+# =====================
 # 3. Endpoint de predicción (recibe JSON de un canal)
-# ======================
+# =====================
 @app.post("/predict", response_model=PredictionOutput, summary="Clasificación EEG", tags=["Modelo"])
 async def predict(features: FeatureInput):
     """
