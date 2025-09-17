@@ -12,6 +12,7 @@ from lime.lime_tabular import LimeTabularExplainer
 from pydantic import BaseModel, Field
 
 class FeatureInput(BaseModel):
+    """ Características de bandas EEG para un canal."""
     Delta: float = Field(..., example=1.2)
     Theta: float = Field(..., example=0.8)
     Alpha: float = Field(..., example=0.5)
@@ -19,10 +20,12 @@ class FeatureInput(BaseModel):
     Gamma: float = Field(..., example=0.1)
 
 class PredictionOutput(BaseModel):
+    """ Salida de la predicción del modelo."""
     prediction: str
     probabilities: list[float]
 
 class ExplainOutput(BaseModel):
+    """ Salida de la explicación LIME."""
     explanation: dict | str  # HTML string or dict
 
 # ======================
